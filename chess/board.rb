@@ -24,7 +24,10 @@ class Board
   end
 
   def valid_move?
-
+    # Define this later
+    # If move (start or finish) is off grid
+    # if Piece can't make that type of move
+    # if there is another one of your own pieces there
   end
 
   def [](pos)
