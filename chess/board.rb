@@ -17,12 +17,14 @@ class Board
 
   def move_piece(start, finish)
     if self[start].nil?
-      begin
-        raise NoPieceError
-      rescue NoPieceError => npe
-        npe.message
-      end
+      raise "Opps there's not a piece there"
+    elsif !valid_move?
+      raise "That is not a valid move."
     end
+  end
+
+  def valid_move?
+
   end
 
   def [](pos)
