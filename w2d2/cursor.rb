@@ -44,6 +44,18 @@ class Cursor
     handle_key(key)
   end
 
+  def test_loop
+    while true
+      get_input
+      p cursor_pos
+      # b.grid.each do |row|
+      #   row.each do |pce|
+      #     p pce.type
+      #   end
+      # end
+    end
+  end
+
   private
 
   def read_char
@@ -77,6 +89,8 @@ class Cursor
 
   def handle_key(key)
     case key
+    when :return || :space
+      cursor_pos
     when :left
       update_pos(MOVES[:left])
     when :right
@@ -85,14 +99,20 @@ class Cursor
       update_pos(MOVES[:down])
     when :up
       update_pos(MOVES[:up])
+    when :ctrl_c
+      Process.exit(0)
     end
-    nil
   end
 
   def update_pos(diff)
-    # Will this work?
+    # Will this work? IT DOES!
     x, y = cursor_pos
-    x, y += diff
-    @cursor_pos = [x, y]
+    a, b = diff
+    x += a
+    y += b 
+    if board.valid_pos?([x,y])
+      @cursor_pos = [x, y]
+    end
+    nil
   end
 end
