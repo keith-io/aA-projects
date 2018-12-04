@@ -4,7 +4,7 @@ require 'colorize'
 
 class Display
   attr_accessor :semaphore
-  attr_reader :board
+  attr_reader :board, :cursor
 
   def initialize(board)
     @cursor = Cursor.new([0,0], board)
@@ -12,10 +12,27 @@ class Display
     @semaphore = true
   end
 
+  def test_loop
+    system("clear")
+    render
+    while true
+      cursor.get_input
+      system("clear")
+      render
+      p cursor.cursor_pos
+    end
+  end
+
   def render
-    board.grid.each do |row|
+    board.grid.each_with_index do |row, idx1|
       toggle_semaphore
-      row.each do |square|
+      row.each_with_index do |square, idx2|
+        if cursor.cursor_pos == [idx1, idx2]
+          print "  ".colorize( :background => :blue)
+          toggle_semaphore
+          next
+        end
+
         if semaphore 
           print "  ".colorize( :background => :light_black)
           toggle_semaphore
