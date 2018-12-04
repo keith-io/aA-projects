@@ -5,8 +5,8 @@ require_relative 'null_piece.rb'
 class Board
   attr_reader :null, :grid
   def initialize
-    @grid = Array.new(8) { Array.new(8) }
     @null = NullPiece.instance
+    @grid = Array.new(8) { Array.new(8) { null } }
     populate
     p @board
   end
@@ -15,10 +15,10 @@ class Board
     @grid.each_with_index do |rank, idx|
       rank.each_with_index do |space, idx2|
 
-        if idx < 2 || idx > 5
-          self[[idx,idx2]] = Piece.new(:generic)
-        else
-          self[[idx,idx2]] = null
+        if idx < 2
+          self[[idx,idx2]] = Piece.new(:black, self, [idx,idx2])
+        elsif idx > 5
+          self[[idx,idx2]] = Piece.new(:white, self, [idx,idx2])
         end
       end
     end
