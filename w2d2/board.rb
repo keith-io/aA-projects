@@ -3,7 +3,7 @@ require_relative 'piece.rb'
 require_relative 'null_piece.rb'
 
 class Board
-  attr_reader :null
+  attr_reader :null, :grid
   def initialize
     @grid = Array.new(8) { Array.new(8) }
     @null = NullPiece.instance
@@ -18,7 +18,7 @@ class Board
         if idx < 2 || idx > 5
           self[[idx,idx2]] = Piece.new(:generic)
         else
-          self[[idx,idx2]] = @null
+          self[[idx,idx2]] = null
         end
       end
     end
@@ -52,7 +52,13 @@ class Board
     col, row = pos
     @grid[col][row] = piece
   end
-  
+
+  def valid_pos?(pos)
+    x, y = pos
+    return false if x < 0 || x > 7
+    return false if y < 0 || y > 7
+    true
+  end
 end
 # grid[][]
 # move_piece([a,1], [a,2])
