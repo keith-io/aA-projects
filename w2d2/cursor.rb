@@ -33,27 +33,17 @@ MOVES = {
 class Cursor
 
   attr_reader :cursor_pos, :board
+  attr_accessor :selected
 
   def initialize(cursor_pos, board)
     @cursor_pos = cursor_pos
     @board = board
+    @selected = false
   end
 
   def get_input
     key = KEYMAP[read_char]
     handle_key(key)
-  end
-
-  def test_loop
-    while true
-      get_input
-      p cursor_pos
-      # b.grid.each do |row|
-      #   row.each do |pce|
-      #     p pce.type
-      #   end
-      # end
-    end
   end
 
   private
@@ -87,9 +77,14 @@ class Cursor
     return input
   end
 
+  def toggle_selected
+    self.selected = !selected
+  end
+
   def handle_key(key)
     case key
     when :return || :space
+      toggle_selected
       cursor_pos
     when :left
       update_pos(MOVES[:left])
