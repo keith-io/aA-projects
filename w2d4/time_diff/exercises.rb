@@ -1,47 +1,47 @@
-# # This is O(n^2)
-# def my_min(list)
+# This is O(n^2)
+def my_min(list)
 
-#   list.each do |i|
-#     return i if list.all?{ |el| i <= el }
-#   end
-# end
+  list.each do |i|
+    return i if list.all?{ |el| i <= el }
+  end
+end
 
-# list = [ 0, 3, 5, 4, -5, 10, 1, 90 ]
-# p my_min(list)  # =>  -5
+list = [ 0, 3, 5, 4, -5, 10, 1, 90 ]
+p my_min(list)  # =>  -5
 
 
-# # This is a O(n)
-# def my_min(list)
-#   min = list.first
-#   list.each do |el|
-#     min = el if el < min 
-#   end
-#   min
-# end
+# This is a O(n)
+def my_min(list)
+  min = list.first
+  list.each do |el|
+    min = el if el < min 
+  end
+  min
+end
 
-# list = [ 0, 3, 5, 4, -5, 10, 1, 90 ]
-# p my_min(list)  # =>  -5
+list = [ 0, 3, 5, 4, -5, 10, 1, 90 ]
+p my_min(list)  # =>  -5
 
-# # Overall this method is O(n^3)
-# def largest_contiguous_subsum(list)
-# subs = []
+# Overall this method is O(n^3)
+def largest_contiguous_subsum(list)
+subs = []
   
-# # this piece is O(n^3)
-#   list.count.times do |i|
-#     (i..list.length - 1).each do |j|
-#       subs << list[i..j]
-#     end
-#   end
+# this piece is O(n^3)
+  list.count.times do |i|
+    (i..list.length - 1).each do |j|
+      subs << list[i..j]
+    end
+  end
   
-#   largest = subs[0][0]
-# # this piece is O(n^2)
-#   subs.each do |sub|
-#     sum = sub.inject(:+)
-#     largest = sum if sum > largest
-#   end
+  largest = subs[0][0]
+# this piece is O(n^2)
+  subs.each do |sub|
+    sum = sub.inject(:+)
+    largest = sum if sum > largest
+  end
   
-#   largest
-# end
+  largest
+end
 
 # This is O(n) because it only has list.size number of operations
 def largest_contiguous_subsum(list)
