@@ -1,0 +1,17 @@
+ /* selectors */
+body {
+  font-family: Arial, sans-serif;
+}
+/* above affects any html body tag */
+
+h1 {
+    font-size: 38px;
+}
+
+h2 {
+    font-size: 32px;
+}
+
+.ingredients-list {
+    list-style: "square inside"
+}
