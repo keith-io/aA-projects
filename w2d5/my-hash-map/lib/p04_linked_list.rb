@@ -1,12 +1,19 @@
+require 'singleton'
+class NullNode
+  include Singleton
+end
+
 class Node
-  attr_reader :key
+
+  attr_reader :key, :sentinel
   attr_accessor :val, :next, :prev
 
   def initialize(key = nil, val = nil)
+    @sentinel = NullNode.instance
     @key = key
     @val = val
-    @next = nil
-    @prev = nil
+    @next = sentinel
+    @prev = sentinel
   end
 
   def to_s
@@ -20,7 +27,12 @@ class Node
 end
 
 class LinkedList
+  include Enumerable
   def initialize
+    @head = Node.new
+    @tail = Node.new
+    @head.next = @tail
+    @tail.prev = @head
   end
 
   def [](i)
@@ -35,6 +47,7 @@ class LinkedList
   end
 
   def empty?
+    # @head== @tail && @tail.prev == @head
   end
 
   def get(key)
