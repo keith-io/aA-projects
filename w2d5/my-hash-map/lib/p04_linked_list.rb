@@ -81,7 +81,6 @@ class LinkedList
 
   def remove(key)
     self.each do |node|
-      p node
       if node.key == key
           
       node.next.prev = node.prev

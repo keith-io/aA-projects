@@ -9,18 +9,27 @@ class HashMap
   end
 
   def include?(key)
+    bucket(key).include?(key)
   end
 
   def set(key, val)
   end
 
   def get(key)
+    bucket(key).get(key)
   end
 
   def delete(key)
+    bucket(key).delete(key)
   end
 
-  def each
+  def each(&prc)
+    i = 0
+    while i < @store.length
+      prc.call(i)
+      i += 1
+    end
+
   end
 
   # uncomment when you have Enumerable included
@@ -45,5 +54,6 @@ class HashMap
 
   def bucket(key)
     # optional but useful; return the bucket corresponding to `key`
+    @store[key.hash % num_buckets]
   end
 end
