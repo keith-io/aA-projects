@@ -1,19 +1,13 @@
-require 'singleton'
-class NullNode
-  include Singleton
-end
-
 class Node
 
-  attr_reader :key, :sentinel
+  attr_reader :key
   attr_accessor :val, :next, :prev
 
   def initialize(key = nil, val = nil)
-    @sentinel = NullNode.instance
     @key = key
     @val = val
-    @next = sentinel
-    @prev = sentinel
+    @next = nil
+    @prev = nil
   end
 
   def to_s
@@ -41,31 +35,67 @@ class LinkedList
   end
 
   def first
+    @head.next
   end
 
   def last
+    @tail.prev
   end
 
   def empty?
-    # @head== @tail && @tail.prev == @head
+    @head.next == @tail && @tail.prev == @head
   end
 
   def get(key)
+    self.each do |node|
+      return node.val if key == node.key
+    end
   end
 
   def include?(key)
+    self.each do |node|
+      if node.key == key
+        return true
+      end
+    end
+    false
   end
 
   def append(key, val)
+    new_node = Node.new(key,val)
+
+    last.next = new_node
+    new_node.prev = last
+
+    @tail.prev = new_node
+    new_node.next = @tail
   end
 
   def update(key, val)
+    self.each do |node|
+      if node.key == key
+        node.val = val
+      end
+    end
   end
 
   def remove(key)
+    self.each do |node|
+      p node
+      if node.key == key
+          
+      node.next.prev = node.prev
+      node.prev.next = node.next
+      end
+    end
   end
 
-  def each
+  def each(&prc)
+    i = first
+    until i == @tail
+      prc.call(i)
+      i = i.next
+    end
   end
 
   # uncomment when you have `each` working and `Enumerable` included
