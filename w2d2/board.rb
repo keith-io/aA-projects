@@ -1,6 +1,5 @@
 require 'byebug'
-require_relative 'piece.rb'
-require_relative 'null_piece.rb'
+require_relative 'pieces.rb'
 
 class Board
   attr_reader :null, :grid
