@@ -1,0 +1,38 @@
+hmtl, body, header, img, aside, div, section, ul, ol {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  line-height:1.5;
+  margin: 0 auto;
+}
+
+ul, ol {
+  list-style: initial;
+}
+
+h1,h2,h3 {
+  font-size: inherit;
+  font-weight:inherit;
+  text-decoration: inherit;
+  font-family:inherit;
+}
+
+img {
+  display:block;
+  max-width:100%;
+}
+
+
+
+@media (min-width: 768px) {
+  body {
+    width:600px;
+  }
+}
+@media (min-width: 1068px) {
+  body {
+    width:900px;
+  }
+}
