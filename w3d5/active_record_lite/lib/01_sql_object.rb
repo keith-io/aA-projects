@@ -107,13 +107,22 @@ class SQLObject
     SQL
     self.id = DBConnection.last_insert_row_id
   end
-
+  
   def update
-    # ...
+    coolsies = self.class.columns.map {|col| col = "#{col} = ?"}.join(", ")
+    DBConnection.execute(<<-SQL, *attribute_values, id)
+      UPDATE
+        #{self.class.table_name}
+      SET
+        #{coolsies}
+      WHERE
+        #{self.class.table_name}.id = ?
+    SQL
+# debugger
   end
 
   def save
-    # ...
+    id.nil? ? insert : update
   end
 
 end
