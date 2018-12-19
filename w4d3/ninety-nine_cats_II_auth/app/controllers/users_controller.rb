@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
 
-  def index
-    render :index
-  end
+  # def index
+  #   render :index
+  # end
 
-  def show
-    render :show
-  end
+  # def show
+  #   render :show
+  # end
 
   def new
     @user = User.new
@@ -20,6 +20,7 @@ class UsersController < ApplicationController
     else
       flash.now[:errors] = @user.errors.full_messages
       render :new
+    end
   end
 
   # def update
