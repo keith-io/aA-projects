@@ -1,0 +1,26 @@
+<% if session %>
+  <% action = session_url %>
+  <% header = "Log In" %>
+<% else %>
+  <% action = users_url %>
+  <% header = "Sign Up" %>
+<% end %>
+
+<form action="<%= action %>" method="POST">
+  <input type="hidden" method="POST">
+  <%= auth_token %>
+
+  <h2><%= header %></h2>
+  
+  <label for="username">Username:
+    <input type="text" name="user[user_name]" value="">
+  </label>
+
+  <label for="password">Password:
+    <input type="password" name="user[password]" value="">
+  </label>
+  
+  <input type="submit" value="<%= header %>">
+  
+</form>
+
