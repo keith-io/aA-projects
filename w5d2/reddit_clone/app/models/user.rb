@@ -8,6 +8,7 @@ class User < ApplicationRecord
   attr_reader :password
 
   has_many :subs
+  has_many :posts
   has_many :comments
   
   def password=(password)
