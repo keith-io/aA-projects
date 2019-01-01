@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   def new
+    # rails is smart enough to render :new?
   end
 
   def create
