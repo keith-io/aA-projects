@@ -1,6 +1,7 @@
 require 'active_support'
 require 'active_support/core_ext'
 require 'erb'
+require 'byebug'
 require_relative './session'
 
 
@@ -21,7 +22,7 @@ class ControllerBase
   def already_built_response?
     @already_built_response
   end
-
+  
   # Set the response status code and header
   def redirect_to(url)
     raise "Exception" if already_built_response?
@@ -43,6 +44,14 @@ class ControllerBase
   # use ERB and binding to evaluate templates
   # pass the rendered html to render_content
   def render(template_name)
+    type = 'text/html'
+    filename = "views/#{self.class.to_s.underscore}/" + template_name.to_s + '.html.erb'
+    content = File.read(filename)
+    # debugger
+
+    template = ERB.new(content).result(binding)
+    render_content(template, type)
+    
   end
 
   # method exposing a `Session` object
