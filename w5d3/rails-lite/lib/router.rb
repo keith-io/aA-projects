@@ -6,6 +6,7 @@ class Route
 
   # checks if pattern matches path and method matches request method
   def matches?(req)
+    
   end
 
   # use pattern to pull out route params (save for later?)

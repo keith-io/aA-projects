@@ -30,6 +30,8 @@ class Cats2Controller < ControllerBase
   end
 end
 
+
+
 router = Router.new
 router.draw do
   get Regexp.new("^/cats$"), Cats2Controller, :index
