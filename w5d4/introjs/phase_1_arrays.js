@@ -28,7 +28,6 @@ Array.prototype.transpose = function () {
 
   for (let i = 0; i < this.length; i++) {
     for (let j = 0; j < this[i].length; j++) {
-      debugger
       arr[j].push(this[i][j]);
     }
   }
