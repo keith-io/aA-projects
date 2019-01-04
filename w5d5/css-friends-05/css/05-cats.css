@@ -1,0 +1,27 @@
+/* PHASE 5: Cats */
+
+.content-group {
+  /* height: 100%; */
+  /* display: flex;
+  flex-direction: row; */
+}
+
+.content-header {
+  position: relative;
+  height: 200px;
+  background: url('../images/cats.jpg');
+  background-size: 100%;
+}
+.content-sidebar {
+    float: left;
+    width: 620px;
+    min-height: 200px;
+    padding: 20px;
+}
+
+.content-main {
+      float: left;
+    width: 620px;
+    min-height: 200px;
+    padding: 20px;
+}
