@@ -8,15 +8,16 @@ function askIfGreaterThan(el1, el2, callback) {
   reader.question(`Is ${el1} bigger than ${el2}\n`, (answer) => {
     const bool = (answer === 'yes') ? true : false;
     callback(bool);
-    reader.close();    
+    // reader.close(); 
   });
 }
 
-const cb = function callback() {
-  console.log("it worked");
-}
+// const cb = function callback() {
+//   console.log("it worked");
+// };
 
 // askIfGreaterThan(3, 1, cb);
+
 let madeAnySwaps;
 
 function innerBubbleSortLoop(arr, i, madeAnySwaps, outerBubbleSortLoop) {
@@ -30,10 +31,10 @@ function innerBubbleSortLoop(arr, i, madeAnySwaps, outerBubbleSortLoop) {
         madeAnySwaps = true;
       }
     });
-    innerBubbleSortLoop(arr, (i + 1), cb);
+    innerBubbleSortLoop(arr, (i + 1), madeAnySwaps, outerBubbleSortLoop);
   
-  } else if (i == (arr.length -1)) {
-    cb(madeAnySwaps);
+  } else if (i === (arr.length -1)) {
+    outerBubbleSortLoop(madeAnySwaps);
   }
 }
 
@@ -41,7 +42,7 @@ function absurdBubbleSort(arr, sortCompletionCallback) {
   function outerBubbleSortLoop(madeAnySwaps) {
     // Begin an inner loop if you made any swaps. Otherwise, call
     // `sortCompletionCallback`.
-    while (madeAnySwaps) {
+    if (madeAnySwaps) {
       innerBubbleSortLoop(arr, 0, false, outerBubbleSortLoop);
     }
     sortCompletionCallback(arr);
