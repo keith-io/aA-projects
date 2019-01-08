@@ -1,0 +1,10 @@
+/* PHASE 9: Forms */
+.form {
+    display: flex;
+
+}
+
+.form-fieldset {
+    background: lightgrey;
+
+}
