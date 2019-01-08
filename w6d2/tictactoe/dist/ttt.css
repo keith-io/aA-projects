@@ -1,0 +1,42 @@
+ul {
+    padding: 0;
+    display: flex;
+    width: fixed;
+    flex-wrap: wrap;
+    margin: auto;
+    width: 330px;
+    height: 330px;
+    border: black 5px solid;
+}
+
+li {
+    list-style: none;
+    width: 100px;
+    height: 100px;
+    background: lightgrey;
+    border: black 5px solid;
+}
+
+h1 {
+    text-align: center;
+    font-size: 30px;
+    font-family: sans-serif;
+    margin: 30px;
+}
+
+li:hover {
+    background: yellow;
+}
+
+.x,
+.o {
+    background: white;
+    cursor: default;
+}
+.x:after {
+  content: "x";
+}
+
+.o:after {
+  content: "o";
+}
