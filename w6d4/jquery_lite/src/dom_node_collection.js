@@ -28,8 +28,8 @@ class DOMNodeCollection {
   }
 
   // second time around like a boss
-  attr(attribute){
-    for(let i = 0; i < this.elements.length; i++) {
+  attr(attribute) {
+    for (let i = 0; i < this.elements.length; i++) {
       const el = this.elements[i];
       if (el.outerHTML.includes(attribute)) {
         let atts = el.attributes;
@@ -78,7 +78,37 @@ class DOMNodeCollection {
       el.classList.remove(klass);
     });
   }
+
+  children() {
+    const kids = [];
+    this.elements.forEach(el => {
+      if (el.children) { kids.push(el.children); }
+      else if (el.children.length === 0) { kids.push(el); }
+    });
+    return new DOMNodeCollection(kids);
+  }
+
+  parent() {
+      const parents = [];
+      this.elements.forEach(el => {
+        parents.push(el.parentNode);
+      });
+      return new DOMNodeCollection(parents);
+  }
+
+  find(selector) {
+    const found = [];
+    this.elements.forEach(el => {
+    found.push(el.querySelectorAll(selector));
+    });
+    return found;
+  }
+  
+  remove() {
+    this.elements.forEach(el => {
+      el.remove();
+    });
+  }
 }
 
 module.exports = DOMNodeCollection;
-
