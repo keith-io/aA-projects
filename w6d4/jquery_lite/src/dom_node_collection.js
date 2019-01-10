@@ -109,6 +109,11 @@ class DOMNodeCollection {
       el.remove();
     });
   }
+
+  on(events, ...selectors, ...data) {
+    this.elements
+  }
+  
 }
 
 module.exports = DOMNodeCollection;
