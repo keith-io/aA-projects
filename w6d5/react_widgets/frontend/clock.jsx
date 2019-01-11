@@ -21,9 +21,6 @@ class Clock extends React.Component {
   }
 
   render() {
-    if (!this.state.time) {
-      return null;
-    }
     let hours = this.state.time.getHours();
     let minutes = this.state.time.getMinutes();
     let seconds = this.state.time.getSeconds();
