@@ -1,8 +1,6 @@
-import Redux from 'react-redux';
-
-const ADD_TODO = 'ADD_TODO';
-const RECEIVE_TODOS = 'RECEIVE_TODOS';
-const RECEIVE_TODO = 'RECEIVE_TODO';
+// const ADD_TODO = 'ADD_TODO';
+export const RECEIVE_TODOS = 'RECEIVE_TODOS';
+export const RECEIVE_TODO = 'RECEIVE_TODO';
 
 // wait do we need this?
 // export const addTodo = (title, body) => {
