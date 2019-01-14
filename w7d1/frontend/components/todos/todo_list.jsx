@@ -1,19 +1,20 @@
 // actual view
 import React from 'react';
-// module.exports = () => <h3>Todo List goes here!</h3>;
+import toDoListItem from '../todo_list/todo_list_item.jsx';
+import ToDoForm from '../todo_list/todo_form.jsx';
 
 const todo = (props) => {
   const todoItems = props.todos.map( todo => (
-    <li key={todo.id}>
-      {todo.title}: {todo.body}
-    </li>
-  ))
+    toDoListItem(todo)
+  ));
 
   return (
-    <>
-     <h2> Todo List </h2>
-     <ul>{todoItems}</ul>
-    </>);
+      <>
+        <h2> Todo List </h2>
+        <ul>{todoItems}</ul>
+        <ToDoForm receiveTodo={receiveTodo} />
+      </>
+    );
 }
 
 export default todo;
