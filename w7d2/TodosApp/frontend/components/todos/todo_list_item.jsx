@@ -1,9 +1,5 @@
 import React from 'react';
-
-// function ToDoListItem (prop) {
-//   return <li key={prop.id}>{prop.title}</li>
-// }
-
+import TodoDetailViewContainer from './todo_detail_view_container';
 import merge from 'lodash/merge';
 
 class TodoListItem extends React.Component {
@@ -32,7 +28,7 @@ class TodoListItem extends React.Component {
 
   render() {
     const { todo, updateTodo } = this.props;
-    const { title, done } = todo;
+    const { title, body, done } = todo;
     let detail;
     if (this.state.detail) {
       detail = <TodoDetailViewContainer todo={todo} />;
@@ -53,6 +49,5 @@ class TodoListItem extends React.Component {
     );
   }
 }
-
 
 export default TodoListItem;
