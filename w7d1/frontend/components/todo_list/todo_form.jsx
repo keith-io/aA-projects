@@ -5,14 +5,20 @@ class ToDoForm extends React.Component {
     super(props);
     this.state = { title: "" , body: "", done: false };
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.update = this.update.bind(this);
+    // this.update = this.update.bind(this);
   }
 
+
   handleSubmit(e) {
-    debugger
     e.preventDefault();
-    this.props.receiveTodo(this.state);
+    const todo = Object.assign({}, this.state, { id: uniqueId() });
+    this.props.receiveTodo(todo);
+    this.setState({
+      title: "",
+      body: ""
+    });
   }
+
 
   update(field) {
     return e => {
@@ -24,8 +30,8 @@ class ToDoForm extends React.Component {
     return (
       <form className="add-todo" onSubmit={this.handleSubmit}>
 
-        Title: <input type="text" onChange={this.update("title")} value={this.state.name}/>
-        Body: <input type="text" onChange={this.update("body")} value={this.state.name}/>
+        Title: <input type="text" onChange={this.update("title")} value={this.state.title}/>
+        Body: <input type="text" onChange={this.update("body")} value={this.state.body}/>
         <input type="submit" value="Add new todo"/>
       </form>
     )
