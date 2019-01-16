@@ -1,5 +1,21 @@
 {
   "name": "pokedex",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "webpack": "^4.28.4"
+  },
+  "version": "1.0.0",
+  "main": "frontend/pokedex.jsx",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack --mode=development --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }
