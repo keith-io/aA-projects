@@ -4,8 +4,8 @@ tmp/
 log/
 .DS_Store
 .byebug_history
-node_modules
-bundle.js
-bundle.js.map
+*/node_modules
+*/bundle.js
+*/bundle.js.map
 *.keep
 *secrets*
